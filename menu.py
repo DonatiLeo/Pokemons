@@ -1,5 +1,5 @@
 import sqlite3
-import hashlib
+from database import ManageData
 
 
 # pokemon dataset : https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6#file-pokemon-csv
@@ -28,11 +28,15 @@ class Menu:
             except ValueError:
                 print("Oups !! Veuillez rentrer soit 1 soit 2 !")
         if choix_utilisateur == 1:
-            self.connexion()
+            self.user_choise()
 
         if choix_utilisateur == 2:
             self.create_account()
             self.ask_account()
+
+    def user_choise(self):
+        self.connexion()
+        # self.ask_pokemons()
 
     def connexion(self):
         email = str(input("\nEntrez votre email : "))
@@ -47,6 +51,7 @@ class Menu:
         else:
             pseudo = resultat[0]
             print("\nBonjour " + pseudo)
+        return pseudo
 
     def create_account(self):
         # TODO: while True
@@ -59,6 +64,15 @@ class Menu:
             ?,?,?);
         """, (pseudo, email, mot_de_passe))
         self.conn.commit()
+
+    def ask_pokemons(self):
+        pseudo = self.connexion()
+        manageData = ManageData()
+        oui = str(input("Voulez vous voir vos pokemons (tapez 'oui')?\n"))
+        if oui == 'oui':
+            manageData.character_display(pseudo)
+        else:
+            self.user_choise()
 
     def exit(self):
         self.conn.close()
