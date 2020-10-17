@@ -7,12 +7,9 @@ CREATE TABLE IF NOT EXISTS Compte(
 );
 
 CREATE TABLE IF NOT EXISTS Pokemons_possessed(
-	id INTEGER NOT NULL UNIQUE,
 	compte_id INTEGER NOT NULL,
 	id_pokemon INTEGER NOT NULL,
-	pokemons_possessed_total REAL NOT NULL,
-	PRIMARY KEY(id AUTOINCREMENT)
+	FOREIGN KEY(compte_id) REFERENCES Compte(id),
+	FOREIGN KEY(id_pokemon) REFERENCES Pokemons(id_pokemon),
+	PRIMARY KEY(compte_id,id_pokemon)
 );
-
-INSERT INTO Pokemons_possessed(id,compte_id,id_pokemon,pokemons_possessed_total) VALUES
-(1,1,31,1);
