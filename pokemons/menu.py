@@ -1,11 +1,12 @@
 import sqlite3
 from database import ManageData
 
-
 # pokemon dataset : https://gist.github.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6#file-pokemon-csv
 
 
 class Menu:
+
+    manageData = ManageData()
 
     def __init__(self):
         # TODO: garder ou supprimer : self.compte_existant = False
@@ -28,6 +29,7 @@ class Menu:
             except ValueError:
                 print("Oups !! Veuillez rentrer soit 1 soit 2 !")
         if choix_utilisateur == 1:
+            Menu.manageData.after_connexion()
             self.user_choise()
 
         if choix_utilisateur == 2:
@@ -36,7 +38,7 @@ class Menu:
 
     def user_choise(self):
         self.connexion()
-        # self.ask_pokemons()
+        self.ask_pokemons()
 
     def connexion(self):
         email = str(input("\nEntrez votre email : "))
@@ -47,11 +49,11 @@ class Menu:
 
         if resultat is None:  # if resultat:  # bool(resultat)
             print("\nDésolé erreur de connection ! Reessayez\n")
-            self.connexion()  # Recursivité
+            return self.connexion()  # Recursivité
         else:
             pseudo = resultat[0]
             print("\nBonjour " + pseudo)
-        return pseudo
+            return pseudo
 
     def create_account(self):
         # TODO: while True
@@ -67,10 +69,9 @@ class Menu:
 
     def ask_pokemons(self):
         pseudo = self.connexion()
-        manageData = ManageData()
         oui = str(input("Voulez vous voir vos pokemons (tapez 'oui')?\n"))
         if oui == 'oui':
-            manageData.character_display(pseudo)
+            Menu.manageData.character_display(pseudo)
         else:
             self.user_choise()
 

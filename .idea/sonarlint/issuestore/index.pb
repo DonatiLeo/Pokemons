@@ -1,15 +1,9 @@
 
-7
-main.py,f\1\f1bdda93d9a278e358509d498e17d97764c1fb29
-7
-game.py,4\6\46f05ba1bc9aacca48cacb476a68ebf273514ac0
-F
-characters/__init__.py,5\f\5f757099650c244b9215008813a50b9fe2bc451a
-B
-characters/boss.py,8\d\8d653487103ac48cb9c205aeba9ad3398b0c2359
-G
-characters/character.py,7\f\7f6f409f15875f12fb95ef6ce923f68531c8e52a
-7
-menu.py,9\e\9e845017dd65192f73f5bbb58034941ce6a71ff6
-<
-datatbase.py,1\2\12c4ad969965bcea2c1fb31c12ed80b42bec5813
+@
+pokemons/main.py,c\7\c748eb21bf8f49556e7e8f2d23e760086b8a02eb
+@
+pokemons/game.py,4\4\444fe6659e3590f5defb8cbe9fba4777b09d4e94
+D
+pokemons/database.py,0\3\03f907f11862c53639da84dc608e6eff6d09da4e
+@
+pokemons/menu.py,c\d\cdbc37cacb3f573c41e44cc231597a3b96c7b7b6
