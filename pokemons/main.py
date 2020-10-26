@@ -4,7 +4,7 @@ from menu import Menu
 
 def main():
     manage_data = ManageData()
-    manage_data.insert_into_table()
+    manage_data.opening_csv()
     menu = Menu()
     menu.ask_account()
 
